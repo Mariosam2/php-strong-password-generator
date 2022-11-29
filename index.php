@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/dictionary.php';
 require __DIR__ . '/functions.php';
-var_dump($_GET);
+//var_dump($_GET);
 /*var_dump($letters); */
 
 if (!empty($_GET)) {
@@ -9,7 +9,7 @@ if (!empty($_GET)) {
         $dictionary = generateDictionary($_GET['dictionary'], $letters, $numbers, $symbols);
         //var_dump($dictionary);
         shuffle($dictionary);
-        //var_dump($dictionary);
+        $dictionary = toArrayString($dictionary);
         $user_password = generatePassword($dictionary, intval($_GET['passLen']), $_GET['rep']);
         //var_dump($user_password);
     }
