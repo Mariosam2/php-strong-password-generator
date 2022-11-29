@@ -1,0 +1,54 @@
+:root {
+    --bg_primary: #2b2d42;
+    --bg_secondary: #8d99ae;
+    --almost_white: #edf2f4;
+}
+
+/* Common rules */
+.text_primary {
+    color: var(--bg_primary);
+}
+
+
+.bg_primary {
+    background-color: var(--bg_primary);
+}
+
+.bg_white {
+    background-color: var(--almost_white);
+}
+
+.bg_secondary,
+body {
+    background-color: var(--bg_secondary);
+}
+
+body {
+    color: var(--almost_white);
+
+}
+
+
+.output {
+    background-color: var(--bg_secondary);
+    margin-bottom: 1rem;
+    color: var(--bg_primary);
+
+}
+
+.ms_caption {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.field {
+    width: 20%;
+}
+
+.field button {
+    color: var(--almost_white);
+}
+
+form>* {
+    padding: 0.5rem 0;
+}
