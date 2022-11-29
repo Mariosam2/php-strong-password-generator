@@ -20,11 +20,20 @@ function generateDictionary($array, $letters, $numbers, $symbols)
     //var_dump($tempArray);
     return $tempArray;
 };
-function generatePassword($dictionary, $length)
+function generatePassword($dictionary, $length, $repetition)
 {
     $password = '';
-    for ($i = 0; $i < $length; $i++) {
-        $password .= $dictionary[rand(0, $length - 1)];
+    if ($repetition === 'yes') {
+        for ($i = 0; $i < $length; $i++) {
+            if (!str_contains($password, $dictionary[rand(0, $length - 1)])) {
+                $password .= $dictionary[rand(0, $length - 1)];
+            }
+        }
+    } else {
+        for ($i = 0; $i < $length; $i++) {
+            $password .= $dictionary[rand(0, $length - 1)];
+        }
     }
+
     return $password;
 };
