@@ -1,5 +1,34 @@
 <?php
-include __DIR__ . '/dictionary.php';
+$disabled = 'disabled';
+require __DIR__ . '/dictionary.php';
+/* var_dump($_GET);
+var_dump($letters); */
+function generateDictionary($array, $letters, $numbers, $symbols)
+{
+    $tempArray = [];
+    if ($array['letters'] === 'on') {
+        $tempArray = array_merge($tempArray, $letters);
+        //var_dump($tempArray);
+    }
+    if ($array['nums'] === 'on') {
+        $tempArray = array_merge($tempArray, $numbers);
+        //var_dump($tempArray);
+    }
+
+    if ($array['symbols'] === 'on') {
+        $tempArray = array_merge($tempArray, $symbols);
+        //var_dump($tempArray);
+    }
+
+    return $tempArray;
+};
+
+if (!empty($_GET)) {
+    $dictionary = generateDictionary($_GET, $letters, $numbers, $symbols);
+    var_dump($dictionary);
+}
+
+
 
 ?>
 
@@ -15,68 +44,84 @@ include __DIR__ . '/dictionary.php';
 </head>
 
 <body>
-    <main id="site_main">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h1></h1>
-                    <h2></h2>
-                    <div class="output">
-                        <span></span>
+    <div id="app">
+        <main id="site_main">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h1></h1>
                         <h2></h2>
+                        <div class="output">
+                            <span></span>
+                            <h2></h2>
+                        </div>
+                        <form action="index.php" method="get">
+                            <div class="length">
+                                <label for="passLen"></label>
+                                <input type="number" name="passLen" id="passLen">
+                            </div>
+                            <!--/.length -->
+                            <fieldset class="rep">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rep" id="" value="yes">
+                                    <label class="form-check-label" for="rep">
+                                        Yes
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="rep" id="" value="no">
+                                    <label class="form-check-label" for="rep">
+                                        No
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <!--/.rep -->
+                            <div class="symbols">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="letters" value="on" id="">
+                                    <label class="form-check-label" for="letters">
+                                        Letters
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="nums" value="on" id="">
+                                    <label class="form-check-label" for="nums">
+                                        Numbers
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="symbols" value="on" id="">
+                                    <label class="form-check-label" for="symbols">
+                                        Symbols
+                                    </label>
+                                </div>
+                            </div>
+                            <!--/.symbols -->
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+                        </form>
                     </div>
-                    <form action="index.php" method="get">
-                        <div class="length">
-                            <label for="passLen"></label>
-                            <input type="number" name="passLen" id="passLen">
-                        </div>
-                        <!--/.length -->
-                        <div class="rep">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="" id="">
-                                <label class="form-check-label" for="">
-                                    Default radio
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="" id="">
-                                <label class="form-check-label" for="">
-                                    Default radio
-                                </label>
-                            </div>
-                        </div>
-                        <!--/.rep -->
-                        <div class="symbols">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="">
-                                <label class="form-check-label" for="">
-                                    Default checkbox
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="">
-                                <label class="form-check-label" for="">
-                                    Default checkbox
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="">
-                                <label class="form-check-label" for="">
-                                    Default checkbox
-                                </label>
-                            </div>
-                        </div>
-                        <!--/.symbols -->
-                    </form>
+                    <!-- /.col -->
                 </div>
-                <!-- /.col -->
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </main>
-    <!-- /#site_main -->
-
+            <!-- /.container -->
+        </main>
+        <!-- /#site_main -->
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const {
+            createApp
+        } = Vue
+        createApp({
+            data() {
+                return {
+                    disabled: false,
+                }
+            }
+        }).mount('#app')
+    </script>
 </body>
 
 </html>
