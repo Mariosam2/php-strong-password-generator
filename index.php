@@ -14,7 +14,7 @@ if (!empty($_GET)) {
         $dictionary = toArrayString($dictionary);
         $user_password = generatePassword($dictionary, intval($_GET['passLen']), $_GET['rep']);
         //var_dump($user_password);
-        // redirect Bonus-4
+        // redirect Bonus-4(decommentare per il redirect)
         /* $_SESSION["user_password"] = $user_password;
         header('Location: ' . 'redirect.php');
         die(); */
