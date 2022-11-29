@@ -1,4 +1,5 @@
 <?php
+session_start();
 require __DIR__ . '/dictionary.php';
 require __DIR__ . '/functions.php';
 //
@@ -13,6 +14,10 @@ if (!empty($_GET)) {
         $dictionary = toArrayString($dictionary);
         $user_password = generatePassword($dictionary, intval($_GET['passLen']), $_GET['rep']);
         //var_dump($user_password);
+        // redirect Bonus-4
+        /* $_SESSION["user_password"] = $user_password;
+        header('Location: ' . 'redirect.php');
+        die(); */
     }
 }
 
@@ -23,15 +28,7 @@ if (!empty($_GET)) {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-
-</head>
+<?php require __DIR__ . './head.php' ?>
 
 <body>
     <div id="app">
