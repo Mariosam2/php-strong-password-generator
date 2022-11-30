@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 require __DIR__ . '/dictionary.php';
 require __DIR__ . '/functions.php';
 //
@@ -11,7 +11,7 @@ if (!empty($_GET)) {
         $dictionary = generateDictionary($_GET['dictionary'], $letters, $numbers, $symbols);
         //var_dump($dictionary);
         shuffle($dictionary);
-        $dictionary = toArrayString($dictionary);
+        //$dictionary = toArrayString($dictionary);
         $user_password = generatePassword($dictionary, intval($_GET['passLen']), $_GET['rep']);
         //var_dump($user_password);
         // redirect Bonus-4(decommentare per il redirect)
